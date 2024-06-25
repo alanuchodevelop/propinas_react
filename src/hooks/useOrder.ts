@@ -25,12 +25,20 @@ export default function useOrder() {
         setOrder(order.filter(item => item.id !== id))
     }
 
+    const placeOrder = () => {
+        console.log("Guardando...")
+        // reiniciando la orden
+        setOrder([])
+        setTip(0)
+    }
+
     console.log("orden",order)
     return {
         order,
         tip,
         setTip,
         addItem,
-        removeItem
+        removeItem,
+        placeOrder
     }
 }

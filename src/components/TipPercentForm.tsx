@@ -21,23 +21,26 @@ const tipOptions = [
 type TipePercentProps = {
     // este tipo de valor viene del propio IDE
     setTip: React.Dispatch<React.SetStateAction<number>>
+    tip: number
 }
 
 //NOTA: este signo " + " cambia el valor del event.target.value a numerico
 
-function TipPercentForm({setTip}: TipePercentProps) {
+function TipPercentForm({setTip, tip}: TipePercentProps) {
     return (
         <div>
             <h3 className={"font-black text-2xl"}>Propinas</h3>
             <form action="">
-                {tipOptions.map((tip) => (
-                    <div className={"flex gap-2"} key={tip.id}>
-                        <label htmlFor={tip.id}>{tip.label}</label>
+                {tipOptions.map((tipOption) => (
+                    <div className={"flex gap-2"} key={tipOption.id}>
+                        <label htmlFor={tipOption.id}>{tipOption.label}</label>
                         <input type="radio"
-                               id={tip.id}
-                               value={tip.value}
+                               id={tipOption.id}
+                               value={tipOption.value}
                                name="tip"
-                               onChange={ e => setTip(+e.target.value)}/>
+                               onChange={ e => setTip(+e.target.value)}
+                               checked={tipOption.value === tip}
+                        />
                     </div>
 
                 ))}
